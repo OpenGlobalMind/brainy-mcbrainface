@@ -103,15 +103,12 @@ export function App() {
         />
         {/* End plugins area */}
       </div>
-      {!loading && (
+      {loading && (
         <div className="main-spinner d-flex justify-content-center align-items-center">
         <div className="spinner-border text-light" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
       </div>
-        // <div className="spinner-border main-spinner text-light" role="status">
-        //   <span className="visually-hidden">Loading...</span>
-        // </div>
       )}
     </div>
   );
