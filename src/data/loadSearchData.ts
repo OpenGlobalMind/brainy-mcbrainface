@@ -3,7 +3,7 @@ import { iThought } from "./iThought";
 export async function loadThoughtData(searchText: string) {
   const apiUrl = `https://memebrane.conversence.com/brain/jerry/search?query=${encodeURI(
     searchText
-  )}&lang=simple&notes=on/`;
+  )}&lang=en&notes=on/`;
   const response = await fetch(`${apiUrl}`, {
     headers: {
       Accept: "application/json"
