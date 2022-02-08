@@ -24,12 +24,12 @@ export const Brainish = ({
     <div className="mainGrid">
       <div className="parentsArea area">
         {mainThought.parents?.map((thought) => (
-          <Thought thought={thought} navToThought={navToThought} />
+          <Thought  key={thought.id} thought={thought} navToThought={navToThought} />
         ))}
       </div>
       <div className="jumpsArea area">
         {mainThought.jumps?.map((thought) => (
-          <Thought thought={thought} navToThought={navToThought} />
+          <Thought  key={thought.id} thought={thought} navToThought={navToThought} />
         ))}
       </div>
       <div className="thoughtArea">
@@ -40,12 +40,12 @@ export const Brainish = ({
       </div>
       <div className="childrenArea area">
         {mainThought.children?.map((thought) => (
-          <Thought thought={thought} navToThought={navToThought} />
+          <Thought key={thought.id} thought={thought} navToThought={navToThought} />
         ))}
       </div>
       <div className="crumbsArea area">
         {crumbs?.map((thought) => (
-          <Thought thought={thought} navToThought={navToCrumb} />
+          <Thought key={thought.id} thought={thought} navToThought={navToCrumb} />
         ))}
       </div>
     </div>

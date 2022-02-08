@@ -10,7 +10,7 @@ interface Props {
 
 export const Thought = ({ thought, navToThought }: Props) => {
   return (
-    <div className="thought" style={{ color: thought.color }}>
+    <div key={thought.id} className="thought" style={{ color: thought.color }}>
       {thought.url && (
         <a
           className="link-icon"
