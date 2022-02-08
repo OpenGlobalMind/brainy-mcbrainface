@@ -147,15 +147,15 @@ body,
 }
 
 .thoughtArea > .thought {
-  font-size: larger;
+  font-size: x-large;
   border: var(--item-highlighted-border);
 }
 
-a:link,
-a:visited,
-a:hover,
-a:active {
-  color: inherit;
+.thought a:link,
+.thought a:visited,
+.thought a:hover,
+.thought a:active {
+  color: currentColor;
   text-decoration: none;
 }
 
