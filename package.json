@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "jerrys-brain-example",
+  "name": "jerrys-brain",
   "version": "0.0.0",
   "license": "MIT",
   "main": "src/index.js",
@@ -61,5 +61,5 @@
     }
   },
   "keywords": [],
-  "description": "A starter kit for playing with new ways to explore Jerry's Brain"
+  "description": ""
 }
