@@ -16,6 +16,7 @@ Thanks to [Jerry Michalisky](https://www.jerrymichalski.com/), [Marc-Antoine Par
 - [Bootstrap 5](https://getbootstrap.com/docs/5.0)
 - [Typescript](https://www.typescriptlang.org/)
 - Hosted Backend [Memebrane](https://memebrane.conversence.com/)
+- Google Analytics
 
 ## Available Scripts
 
