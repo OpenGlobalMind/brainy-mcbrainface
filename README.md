@@ -1,4 +1,10 @@
 # Jerry's Brain Example UI
+A code example of building a user interface to display [Jerry's Brain](https://www.jerrysbrain.com/) using the [Memebrane API](https://memebrane.conversence.com/)
+- See it running on [Code Sandbox](https://q72pv.csb.app/)
+- Fork and edit with an [online editor and template](https://codesandbox.io/s/jerrys-brain-example-ui-q72pv)
+
+Thanks to [Jerry Michalisky](https://www.jerrymichalski.com/), [Marc-Antoine Parent](https://twitter.com/ma_parent), [Peter Kaminski](https://twitter.com/peterkaminski), and funding from [Lionsberg](https://www.lionsberg.org/) 
+
 
 ## Run Locally the first time
 1. Install [Node](https://nodejs.org/)
@@ -9,6 +15,7 @@
 - [React](https://reactjs.org/) with [Create React App](https://github.com/facebook/create-react-app).
 - [Bootstrap 5](https://getbootstrap.com/docs/5.0)
 - [Typescript](https://www.typescriptlang.org/)
+- Hosted Backend [Memebrane](https://memebrane.conversence.com/)
 
 ## Available Scripts
 
