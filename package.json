@@ -1,5 +1,5 @@
 {
-  "name": "jerrys-brain-example-ui",
+  "name": "brainy-mcbrainface",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -42,5 +42,5 @@
     ]
   },
   "keywords": [],
-  "description": ""
+  "description": "An template for making user Interfaces for Memebrane knowledge graphs"
 }
