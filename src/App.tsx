@@ -82,7 +82,7 @@ export function App() {
           </Modal.Header>
           <Modal.Body>
             {Object.entries(searchResults).map(([resultId, value]) => (<div key={resultId}>
-              <Link to={`/${vizId}/${brainId}/${resultId}`} >{value}</Link>
+              <Link onClick={handleClose} to={`/${vizId}/${brainId}/${resultId}`} >{value}</Link>
             </div>))}
           </Modal.Body>
           <Modal.Footer>
