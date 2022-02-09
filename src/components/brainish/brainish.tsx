@@ -1,51 +1,51 @@
+import "./index.scss"
 import { iThought } from "../../data/iThought";
 import { Thought } from "./thought";
+import { useParams } from "react-router-dom";
+import { navToCrumb } from "../../utils/navToCrumb";
+import { useEffect, useState } from "react";
+import { loadThoughtData } from "../../data/loadThoughtData";
 
-interface Props {
-  mainThought: iThought;
-  navToThought: (
-    thoughtId: string,
-    event: React.MouseEvent<HTMLAnchorElement>
-  ) => Promise<void>;
-  crumbs: iThought[];
-  navToCrumb: (
-    thoughtId: string,
-    event: React.MouseEvent<HTMLAnchorElement>
-  ) => Promise<void>;
-}
+export const Brainish = (
+) => {
+  let params = useParams();
+  const crumbs = [] as iThought[];
+  const [thought, setThought] = useState({} as iThought);
 
-export const Brainish = ({
-  mainThought,
-  navToThought,
-  crumbs,
-  navToCrumb
-}: Props) => {
+
+  useEffect(() => {
+    const asyncCall = async()=>{
+      setThought(await loadThoughtData(params.thoughtId || ""))
+    }
+    asyncCall();
+  }, [params.thoughtId]);
+  
   return (
     <div className="mainGrid">
       <div className="parentsArea area">
-        {mainThought.parents?.map((thought) => (
-          <Thought  key={thought.id} thought={thought} navToThought={navToThought} />
+        {thought.parents?.map((thought) => (
+          <Thought key={thought.id} thought={thought} brainId={params.brainId} />
         ))}
       </div>
       <div className="jumpsArea area">
-        {mainThought.jumps?.map((thought) => (
-          <Thought  key={thought.id} thought={thought} navToThought={navToThought} />
+        {thought.jumps?.map((thought) => (
+          <Thought key={thought.id} thought={thought} brainId={params.brainId} />
         ))}
       </div>
       <div className="thoughtArea">
         <div className="jumpsLine"></div>
         <div className="parentsLine"></div>
         <div className="childrenLine"></div>
-        <Thought thought={mainThought} navToThought={navToThought} />
+        <Thought thought={thought} brainId={params.brainId} />
       </div>
       <div className="childrenArea area">
-        {mainThought.children?.map((thought) => (
-          <Thought key={thought.id} thought={thought} navToThought={navToThought} />
+        {thought.children?.map((thought) => (
+          <Thought key={thought.id} thought={thought} brainId={params.brainId} />
         ))}
       </div>
       <div className="crumbsArea area">
         {crumbs?.map((thought) => (
-          <Thought key={thought.id} thought={thought} navToThought={navToCrumb} />
+          <Thought thought={thought} brainId={params.brainId} />
         ))}
       </div>
     </div>

@@ -1,3 +1,6 @@
+import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
+import { useNavigate, useParams } from "react-router-dom";
+
 interface Props {
   searchText: string;
   handleSearchInput: (
@@ -13,33 +16,42 @@ export const Header = ({
   handleSearchInput,
   handleSearchClick
 }: Props) => {
+  let navigate = useNavigate();
+  function navClick(vizId: string){
+    const parts = document.location.pathname.split("/");
+    parts[1] = vizId;
+    navigate(parts.join("/"));
+  }
   return (
-    <div style={{ backgroundColor: "white" }}>
+    <div style={{ background: "white" }} >
       <div className="container">
-        <nav className="navbar navbar-expand-lg navbar-light">
-          <div className="container-fluid">
-            <span className="navbar-brand">Jerry's Brain</span>
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            <form className="d-flex">
-              <input
-                value={searchText}
-                onInput={handleSearchInput}
-                className="form-control me-2"
-                type="search"
-                placeholder="search text..."
-                aria-label="Search"
-              />
-              <button
-                onClick={handleSearchClick}
-                className="btn btn-outline-secondary btn-sm"
-                type="submit"
-              >
-                Search
-              </button>
-            </form>
-          </div>
-        </nav>
-      </div>
+        <Navbar expand="lg">
+          <Container fluid>
+            <Navbar.Brand href="/">Brainy McBrainface</Navbar.Brand>
+            <Navbar.Toggle aria-controls="offcanvasNavbar" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="me-auto">
+                {/* <Nav.Link href="/about">About</Nav.Link> */}
+                <NavDropdown title="Visualizations" id="collasible-nav-dropdown">
+                  <NavDropdown.Item onClick={()=>navClick("brainish")}>Brainish</NavDropdown.Item>
+                  <NavDropdown.Item onClick={()=>navClick("memebrane")}>Memebrane</NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+              {/* <Form className="d-flex">
+                <FormControl
+                  value={searchText}
+                  onInput={handleSearchInput}
+                  type="search"
+                  placeholder="Search"
+                  className="me-2"
+                  aria-label="Search"
+                />
+                <Button onClick={handleSearchClick} variant="outline-success">Search</Button>
+              </Form> */}
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+      </div >
     </div>
   );
 };

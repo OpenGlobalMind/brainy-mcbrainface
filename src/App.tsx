@@ -1,41 +1,23 @@
-import './App.css';
+import './App.scss';
 import { Header } from "./header";
 import { iThought } from "./data/iThought";
-import { loadThoughtData } from "./data/loadThoughtData";
+import { useState } from 'react';
 import { Brainish } from "./components/brainish/brainish";
-import { addCrumbData } from "./data/addCrumbData";
-import { navToCrumb } from "./utils/navToCrumb";
-import { useEffect, useState } from 'react';
-
+import { Memebrane } from "./components/memebrane/Memebrane";
+import { iViz } from './utils/iViz';
+import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import About from './components/about/About';
 
 export function App() {
-  const [loading, setLoading] = useState(true);
-  const [currentThought, setCurrentThought] = useState({} as iThought);
+  const [loading, setLoading] = useState(false);
   const [searchText, setSearchText] = useState("");
-  const [crumbs, setCrumbs] = useState([] as iThought[]);
 
-  async function loadThought(thoughtId: string) {
-    setLoading(true);
-    const thought = await loadThoughtData(thoughtId);
-    const _crumbs = await addCrumbData(thought);
-    setCurrentThought(thought);
-    setCrumbs(_crumbs);
-    setLoading(false);
-  }
-
-  async function navByWindowLocation() {
-    let thoughtId = window.location.pathname.split("/")[1];
-    if (thoughtId === "") thoughtId = "32f9fc36-6963-9ee0-9b44-a89112919e29";
-    loadThought(thoughtId);
-  }
-
-  useEffect(() => {
-    window.addEventListener("popstate", navByWindowLocation);
-    navByWindowLocation();
-    return () => {
-      window.removeEventListener("popstate", navByWindowLocation);
-    };
-  }, []);
+  // ***** Add your visualizations here *****
+  const vizs: iViz[] = [
+    { name: "Brainish", id: "brainish", element: <Brainish /> },
+    { name: "Memebrane", id: "memebrane", element: <Memebrane /> }
+  ]
+  const [viz, setViz] = useState(vizs[0])
 
   async function handleSearchInput(event: React.FormEvent<HTMLInputElement>) {
     setSearchText(event.currentTarget.value);
@@ -59,56 +41,52 @@ export function App() {
           parents.push({ id: key, name: value } as iThought);
         }
 
-        setCurrentThought({
-          name: "",
-          id: "",
-          url: "",
-          children: [],
-          parents: parents,
-          siblings: [],
-          jumps: [],
-          attachments: []
-        });
+        // setCurrentThought({
+        //   name: "",
+        //   id: "",
+        //   url: "",
+        //   children: [],
+        //   parents: parents,
+        //   siblings: [],
+        //   jumps: [],
+        //   attachments: []
+        // });
         setLoading(false);
       });
   }
 
-  async function navToThought(
-    thoughtId: string,
-    event: React.MouseEvent<HTMLAnchorElement>
-  ) {
-    if (event) {
-      event.preventDefault();
-    }
-
-    await loadThought(thoughtId);
-    window.history.pushState(thoughtId, "", `/${thoughtId}`);
-  }
-
   return (
     <div className="fullHeight">
-      <Header
-        searchText={searchText}
-        handleSearchInput={handleSearchInput}
-        handleSearchClick={handleSearchClick}
-      />
-
-      <div className="plugins" style={loading ? { opacity: 0.5 } : {}}>
-        {/* Add your plugins here */}
-        <Brainish
-          mainThought={currentThought}
-          navToThought={navToThought}
-          crumbs={crumbs}
-          navToCrumb={navToCrumb}
+      <BrowserRouter>
+        <Header
+          searchText={searchText}
+          handleSearchInput={handleSearchInput}
+          handleSearchClick={handleSearchClick}
         />
-        {/* End plugins area */}
-      </div>
+
+        <div className="plugins" style={loading ? { opacity: 0.5 } : {}}>
+          <Routes>
+            <Route path="about" element={<About />} />
+            <Route path="brainish" element={<Brainish />} >
+              <Route path=":brainId" element={<Brainish />} >
+                <Route path=":thoughtId" element={<Brainish />} />
+              </Route>
+            </Route>
+            <Route path="memebrane" element={<Memebrane />}  >
+              <Route path=":brainId" element={<Memebrane />} >
+                <Route path=":thoughtId" element={<Memebrane />} />
+              </Route>
+            </Route>
+            <Route path="*" element={<Navigate to="brainish/jerry/32f9fc36-6963-9ee0-9b44-a89112919e29" />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
       {loading && (
         <div className="main-spinner d-flex justify-content-center align-items-center">
-        <div className="spinner-border text-light" role="status">
-          <span className="visually-hidden">Loading...</span>
+          <div className="spinner-border text-light" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
         </div>
-      </div>
       )}
     </div>
   );

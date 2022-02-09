@@ -7,5 +7,5 @@ export interface iThought {
   parents?: iThought[];
   siblings?: iThought[];
   jumps?: iThought[];
-  attachments?: iThought[];
+  attachments?: any[];
 }

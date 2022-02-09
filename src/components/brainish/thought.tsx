@@ -1,14 +1,13 @@
+import { Link, NavLink, useParams } from "react-router-dom";
 import { iThought } from "../../data/iThought";
 import linkIcon from "./linkIcon";
 interface Props {
   thought: iThought;
-  navToThought: (
-    thoughtId: string,
-    event: React.MouseEvent<HTMLAnchorElement>
-  ) => Promise<void>;
+  brainId?: string;
 }
 
-export const Thought = ({ thought, navToThought }: Props) => {
+export const Thought = ({ thought, brainId }: Props) => {
+  let params = useParams();
   return (
     <div key={thought.id} className="thought" style={{ color: thought.color }}>
       {thought.url && (
@@ -21,13 +20,7 @@ export const Thought = ({ thought, navToThought }: Props) => {
           {linkIcon}
         </a>
       )}
-      <a
-        className="navToThought"
-        onClick={(e) => navToThought(thought.id, e)}
-        href={"/" + thought.id}
-      >
-        {thought.name}
-      </a>
+      <Link to={`/brainish/${brainId}/${thought.id}`} >{thought.name}</Link>
     </div>
   );
 };
