@@ -1,7 +1,7 @@
 # Jerry's Brain Example UI
 A code example of building a user interface to display [Jerry's Brain](https://www.jerrysbrain.com/) using the [Memebrane API](https://memebrane.conversence.com/)
-- See it running on [Code Sandbox](https://q72pv.csb.app/)
-- Fork and edit with an [online editor and template](https://codesandbox.io/s/jerrys-brain-example-ui-q72pv)
+- See it running on [Code Sandbox](https://yw6uz.csb.app/)
+- Fork and edit with an [online editor and template](https://codesandbox.io/s/github/OpenGlobalMind/brainy-mcbrainface/)
 
 Thanks to [Jerry Michalisky](https://www.jerrymichalski.com/), [Marc-Antoine Parent](https://twitter.com/ma_parent), [Peter Kaminski](https://twitter.com/peterkaminski), and funding from [Lionsberg](https://www.lionsberg.org/) 
 
