@@ -1,16 +1,23 @@
 import './App.scss';
 import { Header } from "./header";
-import { iThought } from "./data/iThought";
 import { useState } from 'react';
 import { Brainish } from "./components/brainish/brainish";
 import { Memebrane } from "./components/memebrane/Memebrane";
 import { iViz } from './utils/iViz';
-import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Navigate,  Route, Routes } from 'react-router-dom';
 import About from './components/about/About';
+import { Modal } from 'react-bootstrap';
 
 export function App() {
   const [loading, setLoading] = useState(false);
   const [searchText, setSearchText] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [showSearchResults, setShowSearchResults] = useState(false);
+  const handleClose = () => setShowSearchResults(false);
+  const parts = document.location.pathname.split("/");
+  const vizId = parts[1];
+  const brainId = parts[2];
+
 
   // ***** Add your visualizations here *****
   const vizs: iViz[] = [
@@ -36,21 +43,8 @@ export function App() {
     })
       .then((r) => r.json())
       .then((apiData) => {
-        const parents: iThought[] = [];
-        for (const [key, value] of Object.entries(apiData.results)) {
-          parents.push({ id: key, name: value } as iThought);
-        }
-
-        // setCurrentThought({
-        //   name: "",
-        //   id: "",
-        //   url: "",
-        //   children: [],
-        //   parents: parents,
-        //   siblings: [],
-        //   jumps: [],
-        //   attachments: []
-        // });
+        setSearchResults(apiData.results);
+        setShowSearchResults(true);
         setLoading(false);
       });
   }
@@ -80,6 +74,20 @@ export function App() {
             <Route path="*" element={<Navigate to="brainish/jerry/32f9fc36-6963-9ee0-9b44-a89112919e29" />} />
           </Routes>
         </div>
+
+        {/* Search */}
+        <Modal style={{ color: "black" }} show={showSearchResults} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Search Results</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {Object.entries(searchResults).map(([resultId, value]) => (<div key={resultId}>
+              <Link to={`/${vizId}/${brainId}/${resultId}`} >{value}</Link>
+            </div>))}
+          </Modal.Body>
+          <Modal.Footer>
+          </Modal.Footer>
+        </Modal>
       </BrowserRouter>
       {loading && (
         <div className="main-spinner d-flex justify-content-center align-items-center">

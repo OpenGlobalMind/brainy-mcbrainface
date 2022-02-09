@@ -1,5 +1,5 @@
-import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown, Offcanvas } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   searchText: string;
@@ -37,7 +37,7 @@ export const Header = ({
                   <NavDropdown.Item onClick={()=>navClick("memebrane")}>Memebrane</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
-              {/* <Form className="d-flex">
+              <Form className="d-flex">
                 <FormControl
                   value={searchText}
                   onInput={handleSearchInput}
@@ -47,7 +47,7 @@ export const Header = ({
                   aria-label="Search"
                 />
                 <Button onClick={handleSearchClick} variant="outline-success">Search</Button>
-              </Form> */}
+              </Form>
             </Navbar.Collapse>
           </Container>
         </Navbar>
