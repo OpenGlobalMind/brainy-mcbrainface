@@ -20,7 +20,7 @@ export const Thought = ({ thought, brainId }: Props) => {
           {linkIcon}
         </a>
       )}
-      <Link to={`/brainish/${brainId}/${thought.id}`} >{thought.name}</Link>
+      <Link className="navToThought" to={`/brainish/${brainId}/${thought.id}`} >{thought.name}</Link>
     </div>
   );
 };
