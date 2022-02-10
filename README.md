@@ -1,4 +1,4 @@
-# Jerry's Brain Example UI
+# Brainy McBrainface (McBrain)
 A code example of building a user interface to display [Jerry's Brain](https://www.jerrysbrain.com/) using the [Memebrane API](https://memebrane.conversence.com/)
 - See it running on [Code Sandbox](https://yw6uz.csb.app/)
 - Fork and edit with an [online editor and template](https://codesandbox.io/s/github/OpenGlobalMind/brainy-mcbrainface/)

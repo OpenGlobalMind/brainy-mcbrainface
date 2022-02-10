@@ -1,11 +1,11 @@
 import './App.scss';
-import { Header } from "./header";
+import { Header } from "./components/header";
 import { useState } from 'react';
-import { Brainish } from "./components/brainish/brainish";
-import { Memebrane } from "./components/memebrane/Memebrane";
+import { Brainish } from "./visualizations/brainish/brainish";
+import { Memebrane } from "./visualizations/memebrane/Memebrane";
 import { iViz } from './utils/iViz';
 import { BrowserRouter, Link, Navigate,  Route, Routes } from 'react-router-dom';
-import About from './components/about/About';
+import About from './pages/About';
 import { Modal } from 'react-bootstrap';
 
 export function App() {
