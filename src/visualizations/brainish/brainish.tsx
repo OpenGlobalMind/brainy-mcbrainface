@@ -28,7 +28,7 @@ export const Brainish = ({setLoading}:{setLoading:React.Dispatch<React.SetStateA
       }
     }
     asyncCall();
-  }, [thoughtId, brainId]);
+  }, [thoughtId, brainId, navigate, setLoading]);
   
   return (
     <div className="mainGrid">

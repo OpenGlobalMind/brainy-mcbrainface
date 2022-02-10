@@ -28,7 +28,7 @@ export const Memebrane = ({ setLoading }: { setLoading: React.Dispatch<React.Set
             }
         }
         asyncCall();
-    }, [thoughtId, brainId]);
+    }, [thoughtId, brainId, navigate, setLoading]);
 
     return <div className="memebrane">
         <div className="container">
@@ -60,14 +60,10 @@ export const Memebrane = ({ setLoading }: { setLoading: React.Dispatch<React.Set
                         <pre>{JSON.stringify(a, undefined, 2)}</pre>
                     </div>
             ))}
-            <hr/>
+            <hr />
             <p>Breadcrumbs: {crumbs?.map((t) => (<span key={t.id}>
                 <Link to={`/memebrane/${brainId}/${t.id}`} >{t.name}</Link>,<> </>
             </span>))}</p>
         </div>
     </div>
 };
-
-const getThoughtUrl = (thought: iThought) => {
-    return `/${thought.id}`;
-}
