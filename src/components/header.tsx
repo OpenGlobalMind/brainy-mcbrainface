@@ -16,7 +16,7 @@ export const Header = ({
   handleSearchInput,
   handleSearchClick
 }: Props) => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   function navClick(vizId: string) {
     const parts = document.location.pathname.split("/");
     parts[1] = vizId;

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Brainish } from "./visualizations/brainish/brainish";
 import { Memebrane } from "./visualizations/memebrane/Memebrane";
 import { iViz } from './utils/iViz';
-import { BrowserRouter, Link, Navigate,  Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
 import About from './pages/About';
 import { Modal } from 'react-bootstrap';
 
@@ -18,13 +18,6 @@ export function App() {
   const vizId = parts[1];
   const brainId = parts[2];
 
-
-  // ***** Add your visualizations here *****
-  const vizs: iViz[] = [
-    { name: "Brainish", id: "brainish", element: <Brainish setLoading={setLoading} /> },
-    { name: "Memebrane", id: "memebrane", element: <Memebrane /> }
-  ]
-  const [viz, setViz] = useState(vizs[0])
 
   async function handleSearchInput(event: React.FormEvent<HTMLInputElement>) {
     setSearchText(event.currentTarget.value);
@@ -59,6 +52,7 @@ export function App() {
         />
 
         <div className="plugins" style={loading ? { opacity: 0.5 } : {}}>
+          {/* ***** Add your visualizations here ***** */}
           <Routes>
             <Route path="about" element={<About />} />
             <Route path="brainish" element={<Brainish setLoading={setLoading} />} >
@@ -66,9 +60,9 @@ export function App() {
                 <Route path=":thoughtId" element={<Brainish setLoading={setLoading} />} />
               </Route>
             </Route>
-            <Route path="memebrane" element={<Memebrane />}  >
-              <Route path=":brainId" element={<Memebrane />} >
-                <Route path=":thoughtId" element={<Memebrane />} />
+            <Route path="memebrane" element={<Memebrane setLoading={setLoading} />}  >
+              <Route path=":brainId" element={<Memebrane setLoading={setLoading} />} >
+                <Route path=":thoughtId" element={<Memebrane setLoading={setLoading} />} />
               </Route>
             </Route>
             <Route path="*" element={<Navigate to="brainish/jerry/32f9fc36-6963-9ee0-9b44-a89112919e29" />} />
