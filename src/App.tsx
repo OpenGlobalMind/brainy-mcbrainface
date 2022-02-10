@@ -21,7 +21,7 @@ export function App() {
 
   // ***** Add your visualizations here *****
   const vizs: iViz[] = [
-    { name: "Brainish", id: "brainish", element: <Brainish /> },
+    { name: "Brainish", id: "brainish", element: <Brainish setLoading={setLoading} /> },
     { name: "Memebrane", id: "memebrane", element: <Memebrane /> }
   ]
   const [viz, setViz] = useState(vizs[0])
@@ -61,9 +61,9 @@ export function App() {
         <div className="plugins" style={loading ? { opacity: 0.5 } : {}}>
           <Routes>
             <Route path="about" element={<About />} />
-            <Route path="brainish" element={<Brainish />} >
-              <Route path=":brainId" element={<Brainish />} >
-                <Route path=":thoughtId" element={<Brainish />} />
+            <Route path="brainish" element={<Brainish setLoading={setLoading} />} >
+              <Route path=":brainId" element={<Brainish setLoading={setLoading} />} >
+                <Route path=":thoughtId" element={<Brainish setLoading={setLoading} />} />
               </Route>
             </Route>
             <Route path="memebrane" element={<Memebrane />}  >
