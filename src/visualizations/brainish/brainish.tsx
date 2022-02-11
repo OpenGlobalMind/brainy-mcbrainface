@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { loadThoughtData } from "../../data/loadThoughtData";
 import { addCrumbData } from "../../data/addCrumbData";
+import { Attachment } from "../../components/Attachment";
 
 export const Brainish = ({ setLoading }: { setLoading: React.Dispatch<React.SetStateAction<boolean>> }
 ) => {
@@ -63,6 +64,11 @@ export const Brainish = ({ setLoading }: { setLoading: React.Dispatch<React.SetS
           <Thought key={t.id} thought={t} brainId={brainId} />
         ))}
       </div>
+      {/* <div className="notesArea">
+        {thought.attachments?.map((a) => (
+          <Attachment key={a.id} att={a}/>
+        ))}
+      </div> */}
       <div className="crumbsArea area">
         {crumbs?.map((t) => (
           <Thought key={t.id} thought={t} brainId={brainId} />
