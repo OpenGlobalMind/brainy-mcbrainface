@@ -21,9 +21,14 @@ export const Memebrane = ({ setLoading }: { setLoading: React.Dispatch<React.Set
                 navigate(`${brainId}/32f9fc36-6963-9ee0-9b44-a89112919e29`);
             } else {
                 setLoading(true);
-                const retrievedThought = await loadThoughtData(thoughtId,brainId);
-                setThought(retrievedThought);
-                setCrumbs(await addCrumbData(retrievedThought));
+                try {
+                    const retrievedThought = await loadThoughtData(thoughtId, brainId);
+                    setThought(retrievedThought);
+                    setCrumbs(await addCrumbData(retrievedThought));
+                } catch (e) {
+                    console.error(e);
+                    alert(e);
+                }
                 setLoading(false);
             }
         }
