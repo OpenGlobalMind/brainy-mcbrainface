@@ -42,7 +42,7 @@
   flex-grow: 1;
 }
 
-.area {
+.areaWide {
   padding: 10px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -53,6 +53,20 @@
   position: relative;
 }
 
+.areaNarrow {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.5rem;
+  border-radius: 20px;
+  border-width: 10px;
+  align-items: start;
+  position: relative;
+  overflow-y: auto;
+  max-height: 88vh;
+  padding-top: 60px;
+}
+
 .areaLabel {
   position: absolute;
   top: 0;
@@ -60,6 +74,7 @@
   font-size: xxx-large;
   text-transform: uppercase;
   font-weight: bolder;
+  pointer-events: none; 
 }
 
 .childrenArea .areaLabel {
@@ -76,9 +91,6 @@
 .jumpsArea {
   grid-area: jumps;
   border-right: solid var(--line-color);
-  overflow-y: auto;
-  max-height: 80vh;
-  padding-top: 60px;
 }
 
 .siblingsArea {
@@ -87,9 +99,6 @@
   }
   grid-area: siblings;
   border-left: solid var(--line-color);
-  overflow-y: auto;
-  max-height: 80vh;
-  padding-top: 60px;
 }
 
 .parentsLine {
@@ -124,12 +133,6 @@
   right: -13px;
 }
 
-.thoughtArea {
-  padding: 20px;
-  grid-area: thought;
-  position: relative;
-  display: grid;
-}
 .childrenArea {
   grid-area: children;
   border-top: solid var(--line-color);
@@ -148,18 +151,29 @@
 }
 
 .thought {
-  border: 1px solid rgba(255, 255, 255, 0.486);
-  padding: 5px 15px;
-  border-radius: 20px;
-  color: white;
+  padding: 2px 5px;
+  border-radius: 5px;
   background: var(--item-background);
   direction: ltr;
   display: flex;
+  a{
+    overflow: hidden;
+    max-height: 1.3em;
+  }
 }
 
-.thoughtArea > .thought {
-  font-size: x-large;
-  border: var(--item-highlighted-border);
+.thoughtArea {
+  padding: 20px;
+  grid-area: thought;
+  position: relative;
+  display: grid;
+  .thought {
+    font-size: x-large;
+    border: var(--item-highlighted-border);
+    a{
+      max-height: unset;
+    }
+  }
 }
 
 .thought a:link,

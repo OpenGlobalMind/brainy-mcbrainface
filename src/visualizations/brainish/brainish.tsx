@@ -22,7 +22,7 @@ export const Brainish = ({ setLoading }: { setLoading: React.Dispatch<React.SetS
         navigate(`${brainId}/32f9fc36-6963-9ee0-9b44-a89112919e29`);
       } else {
         setLoading(true);
-        const retrievedThought = await loadThoughtData(thoughtId || "");
+        const retrievedThought = await loadThoughtData(thoughtId,brainId);
         setThought(retrievedThought);
         setCrumbs(await addCrumbData(retrievedThought));
         setLoading(false);
@@ -33,13 +33,13 @@ export const Brainish = ({ setLoading }: { setLoading: React.Dispatch<React.SetS
 
   return (
     <div className="mainGrid">
-      <div className="parentsArea area">
+      <div className="parentsArea areaWide">
         <div className="areaLabel">Parents</div>
         {thought.parents?.map((t) => (
           <Thought key={t.id} thought={t} brainId={brainId} />
         ))}
       </div>
-      <div className="jumpsArea area">
+      <div className="jumpsArea areaNarrow">
         <div className="areaLabel">Jumps</div>
         {thought.jumps?.map((t) => (
           <Thought key={t.id} thought={t} brainId={brainId} />
@@ -52,24 +52,24 @@ export const Brainish = ({ setLoading }: { setLoading: React.Dispatch<React.SetS
         <div className="siblingsLine"></div>
         <Thought thought={thought} brainId={brainId} />
       </div>
-      <div className="childrenArea area">
+      <div className="childrenArea areaWide">
         <div className="areaLabel">Children</div>
         {thought.children?.map((t) => (
           <Thought key={t.id} thought={t} brainId={brainId} />
         ))}
       </div>
-      <div className="siblingsArea area">
+      <div className="siblingsArea areaNarrow">
         <div className="areaLabel">Siblings</div>
         {thought.siblings?.map((t) => (
           <Thought key={t.id} thought={t} brainId={brainId} />
         ))}
       </div>
-      {/* <div className="notesArea">
+      {/* <div className="notesareaWide">
         {thought.attachments?.map((a) => (
           <Attachment key={a.id} att={a}/>
         ))}
       </div> */}
-      <div className="crumbsArea area">
+      <div className="crumbsArea areaWide">
         {crumbs?.map((t) => (
           <Thought key={t.id} thought={t} brainId={brainId} />
         ))}

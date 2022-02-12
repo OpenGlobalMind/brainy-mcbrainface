@@ -7,9 +7,8 @@ interface Props {
 }
 
 export const Thought = ({ thought, brainId }: Props) => {
-  let params = useParams();
   return (
-    <div key={thought.id} className="thought" style={{ color: thought.color }}>
+    <div title={thought.name} key={thought.id} className="thought" style={{ color: thought.color }}>
       {thought.url && (
         <a
           className="link-icon"

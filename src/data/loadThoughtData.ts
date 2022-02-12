@@ -1,8 +1,8 @@
 import { iThought } from "./iThought";
 import { iRoot } from "./iRoot";
 
-export async function loadThoughtData(thoughtId: string) {
-  const apiUrl = `https://memebrane.conversence.com/brain/jerry/thought/${thoughtId}/`;
+export async function loadThoughtData(thoughtId: string, brainId:string) {
+  const apiUrl = `https://memebrane.conversence.com/brain/${brainId}/thought/${thoughtId}/`;
   const response = await fetch(`${apiUrl}`, {
     headers: {
       Accept: "application/json"
