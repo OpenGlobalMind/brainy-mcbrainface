@@ -37,6 +37,7 @@ export async function loadThoughtData(thoughtId: string, brainId:string) {
     siblings: siblings,
     jumps: jumps,
     attachments: attachments,
-    url: url
+    url: url,
+    raw: apiData
   };
 }
