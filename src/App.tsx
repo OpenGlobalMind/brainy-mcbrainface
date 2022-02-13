@@ -7,6 +7,7 @@ import { iViz } from './utils/iViz';
 import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
 import About from './pages/About';
 import { Modal } from 'react-bootstrap';
+import { Brainstorm } from './visualizations/brainstorm/Brainstorm';
 
 export function App() {
   const [loading, setLoading] = useState(false);
@@ -63,6 +64,11 @@ export function App() {
             <Route path="memebrane" element={<Memebrane setLoading={setLoading} />}  >
               <Route path=":brainId" element={<Memebrane setLoading={setLoading} />} >
                 <Route path=":thoughtId" element={<Memebrane setLoading={setLoading} />} />
+              </Route>
+            </Route>
+            <Route path="brainstorm" element={<Brainstorm setLoading={setLoading} />}  >
+              <Route path=":brainId" element={<Brainstorm setLoading={setLoading} />} >
+                <Route path=":thoughtId" element={<Brainstorm setLoading={setLoading} />} />
               </Route>
             </Route>
             <Route path="*" element={<Navigate to="brainish/jerry/32f9fc36-6963-9ee0-9b44-a89112919e29" />} />

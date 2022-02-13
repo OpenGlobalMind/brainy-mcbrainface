@@ -33,6 +33,7 @@ export const Header = ({
               <Nav className="me-auto">
                 <NavDropdown title="Visualizations" id="collasible-nav-dropdown">
                   <NavDropdown.Item onClick={() => navClick("brainish")}>Brainish</NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => navClick("brainstorm")}>Brainstorm</NavDropdown.Item>
                   <NavDropdown.Item onClick={() => navClick("memebrane")}>Memebrane</NavDropdown.Item>
                 </NavDropdown>
               <Nav.Link href="/about">About</Nav.Link>
