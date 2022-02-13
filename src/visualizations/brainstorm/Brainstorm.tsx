@@ -8,6 +8,33 @@ import * as d3 from 'd3'
 import React from "react";
 import miserables from "./miserables.json"
 
+const data = {
+    nodes: [
+        {
+            "id": "Myriel",
+            "group": 1
+        },
+        {
+            "id": "Napoleon",
+            "group": 1
+        },
+        {
+            "id": "Mlle.Baptistine",
+            "group": 1
+        }],
+    links: [
+        {
+            "source": "Napoleon",
+            "target": "Myriel",
+            "value": 2
+        },
+        {
+            "source": "Mlle.Baptistine",
+            "target": "Myriel",
+            "value": 2
+        }
+    ]
+}
 
 export const Brainstorm = ({ setLoading }: { setLoading: React.Dispatch<React.SetStateAction<boolean>> }
 ) => {
@@ -16,17 +43,6 @@ export const Brainstorm = ({ setLoading }: { setLoading: React.Dispatch<React.Se
     const navigate = useNavigate();
     const [crumbs, setCrumbs] = useState([] as iThought[]);
     const ref: RefObject<HTMLDivElement> = React.createRef()
-
-    const draw = () => {
-        d3.select(ref.current).append('p').text('Hello World')
-        d3.select('svg')
-            .append('g')
-            .attr('transform', 'translate(250, 0)')
-            .append('rect')
-            .attr('width', 500)
-            .attr('height', 500)
-            .attr('fill', 'tomato')
-    }
 
     // Copyright 2021 Observable, Inc.
     // Released under the ISC license.
@@ -67,6 +83,7 @@ export const Brainstorm = ({ setLoading }: { setLoading: React.Dispatch<React.Se
         // @ts-ignore
         if (nodeTitle === undefined) nodeTitle = (_: any, i: string | number) => N[i];
         const T = nodeTitle == null ? null : d3.map(nodes, nodeTitle);
+        console.log(nodeTitle)
         // @ts-ignore
         const G = nodeGroup == null ? null : d3.map(nodes, nodeGroup).map(intern);
         const W = typeof linkStrokeWidth !== "function" ? null : d3.map(links, linkStrokeWidth);
@@ -178,7 +195,7 @@ export const Brainstorm = ({ setLoading }: { setLoading: React.Dispatch<React.Se
 
     useEffect(() => {
         //draw()
-        const chart = ForceGraph(miserables, {
+        const chart = ForceGraph(data, {
             // @ts-ignore
             nodeId: d => d.id,
             // @ts-ignore
@@ -192,7 +209,7 @@ export const Brainstorm = ({ setLoading }: { setLoading: React.Dispatch<React.Se
             height: 600//,
             // @ts-ignore
             //invalidation // a promise to stop the simulation when the cell is re-run
-          })
+        })
     }, [])
 
     useEffect(() => {
