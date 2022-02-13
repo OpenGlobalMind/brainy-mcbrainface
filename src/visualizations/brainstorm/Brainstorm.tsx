@@ -35,6 +35,43 @@ const data = {
     ]
 }
 
+const data2 = {
+    nodes: [
+        {
+            "id": "Myriel",
+            "group": 1
+        },
+        {
+            "id": "Napoleon",
+            "group": 1
+        },
+        {
+            "id": "Mlle.Baptistine",
+            "group": 1
+        },
+        {
+            "id": "new",
+            "group": 1
+        }],
+    links: [
+        {
+            "source": "Napoleon",
+            "target": "Myriel",
+            "value": 2
+        },
+        {
+            "source": "Mlle.Baptistine",
+            "target": "Myriel",
+            "value": 2
+        },
+        {
+            "source": "new",
+            "target": "Myriel",
+            "value": 2
+        }
+    ]
+}
+
 export const Brainstorm = ({ setLoading }: { setLoading: React.Dispatch<React.SetStateAction<boolean>> }
 ) => {
     let { brainId, thoughtId } = useParams();
@@ -47,21 +84,12 @@ export const Brainstorm = ({ setLoading }: { setLoading: React.Dispatch<React.Se
     useEffect(() => {
         //draw()
         if (ref.current) {
-            const sim = ForceGraph(data, ref.current, {
-                // @ts-ignore
-                nodeId: d => d.id,
-                // @ts-ignore
-                nodeGroup: d => d.group,
-                // @ts-ignore
-                nodeTitle: d => `${d.id}`,
-                // @ts-ignore
-                linkStrokeWidth: l => Math.sqrt(l.value),
-                // @ts-ignore
-                width: 600,
-                height: 600//,
-                // @ts-ignore
-                //invalidation // a promise to stop the simulation when the cell is re-run
-            })
+            const sim = ForceGraph(ref.current);
+            console.log(sim)
+            sim.update(data)
+            setTimeout(() => {
+                sim.update(data2);
+            }, 1000);
         }
     }, [])
 
