@@ -74,7 +74,7 @@ export const Brainstorm = ({ setLoading }: { setLoading: React.Dispatch<React.Se
                     a[t.id] = t;
                     return a;
                 }, thoughtIndex)
-                console.log(updatedThoughtIndex)
+                // console.log(updatedThoughtIndex)
                 setThoughtIndex(updatedThoughtIndex);
 
                 // add new links to index

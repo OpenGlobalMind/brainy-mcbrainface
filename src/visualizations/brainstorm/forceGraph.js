@@ -40,7 +40,7 @@ export function ForceGraph(svgElement, thoughtClicked) {
     // .force("x", d3.forceX().strength(.01))
     // .force("y", d3.forceY().strength(.01))
     .force('collision', rectCollide().size(d => {
-      console.log(d)
+      // console.log(d)
       return [d.name.length > maxNameLength ? maxNameLength * charMult :
         d.name.length * charMult
         , 30]

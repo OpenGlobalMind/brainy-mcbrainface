@@ -25,6 +25,7 @@ export const Memebrane = ({ setLoading }: { setLoading: React.Dispatch<React.Set
                     const retrievedThought = await loadThoughtData(thoughtId, brainId);
                     setThought(retrievedThought);
                     setCrumbs(await addCrumbData(retrievedThought));
+                    // console.log(retrievedThought.raw)
                 } catch (e) {
                     console.error(e);
                     alert(e);
