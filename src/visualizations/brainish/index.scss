@@ -199,19 +199,19 @@
 }
 
 
-// .notesArea {
-//   grid-area: notes;
-//   overflow: auto;
-//   max-height: 80vh;
-//   background-color: white;
-//   color: black;
-//   border-radius: 5px;
-// }
-// .mainGrid {
-//   grid-template-columns: max(250px) auto max(250px) max(400px);
-//   grid-template-areas:
-//     "jumps parents siblings notes"
-//     "jumps thought siblings notes"
-//     "jumps children siblings notes"
-//     "crumbs crumbs crumbs notes";
-// }
+.notesArea {
+  grid-area: notes;
+  overflow: auto;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  padding: 0;
+}
+.mainGrid {
+  grid-template-columns: max(250px) auto max(250px) max(400px);
+  grid-template-areas:
+    "jumps parents siblings notes"
+    "jumps thought siblings notes"
+    "jumps children siblings notes"
+    "crumbs crumbs crumbs crumbs";
+}

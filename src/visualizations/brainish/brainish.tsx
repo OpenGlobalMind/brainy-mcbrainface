@@ -69,14 +69,14 @@ export const Brainish = ({ setLoading }: { setLoading: React.Dispatch<React.SetS
           <Thought key={t.id} thought={t} brainId={brainId} />
         ))}
       </div>
-      {/* <div className="notesareaWide">
+      <div className="notesArea areaNarrow">
         {thought.attachments?.map((a) => (
           <Attachment key={a.id} att={a}/>
         ))}
-      </div> */}
+      </div>
       <div className="crumbsArea areaWide">
         {crumbs?.map((t) => (
-          <Thought key={t.id} thought={t} brainId={brainId} />
+          <Thought key={t.id?t.id:t.toString()} thought={t} brainId={brainId} />
         ))}
       </div>
     </div>

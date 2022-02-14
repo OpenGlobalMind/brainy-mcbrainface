@@ -17,7 +17,7 @@ export const Attachment = ({ att }: Props) => {
           <div><b>{att.name}</b> (ExternalUrl)</div>
           <a href={att.location} target="_blank" rel="noreferrer">{att.location}</a>
         </div>
-        {/* <iframe src={att.location} width="100%" /> */}
+        <iframe src={att.location} style={{width:"100%", height:"80vh"}} />
       </div>
       :
       <div >
