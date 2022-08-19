@@ -74,7 +74,7 @@
   font-size: xxx-large;
   text-transform: uppercase;
   font-weight: bolder;
-  pointer-events: none; 
+  pointer-events: none;
 }
 
 .childrenArea .areaLabel {
@@ -156,7 +156,8 @@
   background: var(--item-background);
   direction: ltr;
   display: flex;
-  a{
+  position: relative;
+  a {
     overflow: hidden;
     max-height: 1.3em;
   }
@@ -170,7 +171,7 @@
   .thought {
     font-size: x-large;
     border: var(--item-highlighted-border);
-    a{
+    a {
       max-height: unset;
     }
   }
@@ -198,7 +199,6 @@
   height: 1em;
 }
 
-
 .notesArea {
   grid-area: notes;
   overflow: auto;
@@ -207,6 +207,7 @@
   border-radius: 5px;
   padding: 0;
 }
+
 .mainGrid {
   grid-template-columns: max(250px) auto max(250px) max(400px);
   grid-template-areas:
@@ -214,4 +215,12 @@
     "jumps thought siblings notes"
     "jumps children siblings notes"
     "crumbs crumbs crumbs crumbs";
+}
+
+.thoughtIcon {
+  left: -0.2em;
+  width: 1em;
+  height: 1em;
+  position: relative;
+  transform: scale(1.5);
 }

@@ -8,4 +8,5 @@ export interface iThought {
   siblings?: iThought[];
   jumps?: iThought[];
   attachments?: any[];
+  brainId?: string;
 }
