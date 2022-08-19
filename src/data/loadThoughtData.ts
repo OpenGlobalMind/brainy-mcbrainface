@@ -1,7 +1,7 @@
 import { iThought } from "./iThought";
 import { iRoot } from "./iRoot";
 
-export async function loadThoughtData(thoughtId: string, brainId:string) {
+export async function loadThoughtData(thoughtId: string, brainId: string) {
   const apiUrl = `https://memebrane.conversence.com/brain/${brainId}/thought/${thoughtId}/`;
   const response = await fetch(`${apiUrl}`, {
     headers: {
@@ -28,7 +28,8 @@ export async function loadThoughtData(thoughtId: string, brainId:string) {
   const siblings = root.siblings.map((c) => thoughtsIndex[c]);
   const jumps = root.jumps.map((c) => thoughtsIndex[c]);
   const attachments = root.attachments;
-  const url = attachments.find((a) => a.location)?.location;
+
+  // const url = attachments.find((a) => a.location)?.location;
 
   return {
     ...thoughtsIndex[root.id],
@@ -37,7 +38,7 @@ export async function loadThoughtData(thoughtId: string, brainId:string) {
     siblings: siblings,
     jumps: jumps,
     attachments: attachments,
-    url: url,
+    // url: url,
     raw: apiData
   };
 }

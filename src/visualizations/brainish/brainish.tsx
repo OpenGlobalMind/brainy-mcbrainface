@@ -26,6 +26,14 @@ export const Brainish = ({ setLoading }: { setLoading: React.Dispatch<React.SetS
           const retrievedThought = await loadThoughtData(thoughtId, brainId);
           setThought(retrievedThought);
           setCrumbs(await addCrumbData(retrievedThought));
+          // TODO: temp try opening in a new window
+          for (const attachment of retrievedThought.attachments) {
+            console.log("opening URL")
+            if (attachment.type === "ExternalUrl") {
+              window.open(attachment.location, "mcBrain")
+            }
+          }
+
         } catch (e) {
           console.error(e);
           alert(e);
@@ -71,12 +79,12 @@ export const Brainish = ({ setLoading }: { setLoading: React.Dispatch<React.SetS
       </div>
       <div className="notesArea areaNarrow">
         {thought.attachments?.map((a) => (
-          <Attachment key={a.id} att={a}/>
+          <Attachment key={a.id} att={a} />
         ))}
       </div>
       <div className="crumbsArea areaWide">
         {crumbs?.map((t) => (
-          <Thought key={t.id?t.id:t.toString()} thought={t} brainId={brainId} />
+          <Thought key={t.id ? t.id : t.toString()} thought={t} brainId={brainId} />
         ))}
       </div>
     </div>

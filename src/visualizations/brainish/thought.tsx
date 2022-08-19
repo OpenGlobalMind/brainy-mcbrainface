@@ -1,4 +1,4 @@
-import { Link, NavLink, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { iThought } from "../../data/iThought";
 import linkIcon from "./linkIcon";
 interface Props {
@@ -7,13 +7,15 @@ interface Props {
 }
 
 export const Thought = ({ thought, brainId }: Props) => {
+  const url = thought?.attachments?.find((a) => a.location)?.location;
+
   return (
     <div title={thought.name} key={thought.id} className="thought" style={{ color: thought.color }}>
-      {thought.url && (
+      {url && (
         <a
           className="link-icon"
-          href={thought.url}
-          target="_blank"
+          href={url}
+          target="mcBrain"
           rel="noreferrer"
         >
           {linkIcon}
