@@ -30,7 +30,7 @@ export async function loadThoughtData(thoughtId: string, brainId: string) {
   const attachments = root.attachments;
 
   // const url = attachments.find((a) => a.location)?.location;
-  console.log("thought", thoughtsIndex[root.id]);
+
   return {
     ...thoughtsIndex[root.id],
     children: children,
