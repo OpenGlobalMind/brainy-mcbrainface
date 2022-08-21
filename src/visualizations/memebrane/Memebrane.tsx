@@ -59,7 +59,7 @@ export const Memebrane = ({ setLoading }: { setLoading: React.Dispatch<React.Set
                 a.type === "ExternalUrl" ?
                     <div key={a.id} style={{ margin: "1em 0 1em 2.5em" }}>
                         <div><b>{a.name}</b> (ExternalUrl)</div>
-                        <a href={a.location} target="mcBrain" rel="noreferrer">{a.location}</a>
+                        <a href={a.location} target="mcBrain">{a.location}</a>
                     </div>
                     :
                     <div key={a.id} style={{ margin: "1em 0 1em 2.5em" }}>

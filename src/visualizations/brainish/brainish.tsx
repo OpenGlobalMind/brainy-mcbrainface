@@ -23,7 +23,7 @@ export const Brainish = ({ setLoading }: { setLoading: React.Dispatch<React.SetS
       } else {
         setLoading(true);
         try {
-          const retrievedThought = await loadThoughtData(thoughtId, brainId);
+          const retrievedThought = await loadThoughtData(thoughtId, brainId, true);
           setThought(retrievedThought);
           setCrumbs(await addCrumbData(retrievedThought));
           // TODO: temp try opening in a new window

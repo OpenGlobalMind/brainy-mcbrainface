@@ -21,7 +21,6 @@ export const Thought = ({ thought, brainId }: Props) => {
             className="link-icon"
             href={url}
             target="mcBrain"
-            rel="noreferrer"
           >
             {linkIcon}
           </a>
