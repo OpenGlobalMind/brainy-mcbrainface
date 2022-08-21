@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { iThought } from "../../data/iThought";
+import { removeSortPrefix } from "../../utils/removeSortPrefix";
 import linkIcon from "./linkIcon";
 interface Props {
   thought: iThought;
@@ -25,7 +26,7 @@ export const Thought = ({ thought, brainId }: Props) => {
             {linkIcon}
           </a>
         )}
-      <Link className="navToThought" to={`/brainish/${brainId}/${thought.id}`} >{thought.name}</Link>
+      <Link className="navToThought" to={`/brainish/${brainId}/${thought.id}`} >{removeSortPrefix(thought.name)}</Link>
     </div>
   );
 };
