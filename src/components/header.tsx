@@ -1,7 +1,10 @@
 import { Button, Container, Form, FormControl, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { config } from "../config";
+
 
 interface Props {
+  brainId: string;
   searchText: string;
   handleSearchInput: (
     event: React.FormEvent<HTMLInputElement>
@@ -12,6 +15,7 @@ interface Props {
 }
 
 export const Header = ({
+  brainId,
   searchText,
   handleSearchInput,
   handleSearchClick
@@ -22,21 +26,29 @@ export const Header = ({
     parts[1] = vizId;
     navigate(parts.join("/"));
   }
+
+  let b = config.brains[brainId];
+
   return (
     <div style={{ background: "white" }} >
       <div className="container">
         <Navbar expand="lg">
           <Container fluid>
-            <Navbar.Brand href="/">Brainy McBrainface</Navbar.Brand>
+            <Navbar.Brand href={b?.homeUrl || "/"}>{b?.name}</Navbar.Brand>
             <Navbar.Toggle aria-controls="offcanvasNavbar" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
-                <NavDropdown title="Visualizations" id="collasible-nav-dropdown">
-                  <NavDropdown.Item onClick={() => navClick("brainish")}>Brainish</NavDropdown.Item>
-                  <NavDropdown.Item onClick={() => navClick("brainstorm")}>Brainstorm</NavDropdown.Item>
-                  <NavDropdown.Item onClick={() => navClick("memebrane")}>Memebrane</NavDropdown.Item>
-                </NavDropdown>
-              <Nav.Link href="/about">About</Nav.Link>
+                {b?.showVisualizations &&
+                  <NavDropdown title="Visualizations" id="collasible-nav-dropdown">
+                    <NavDropdown.Item onClick={() => navClick("brainish")}>Brainish</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => navClick("brainstorm")}>Brainstorm</NavDropdown.Item>
+                    <NavDropdown.Item onClick={() => navClick("memebrane")}>Memebrane</NavDropdown.Item>
+                  </NavDropdown>
+                }
+                {b?.pages.map(p =>
+                  <Nav.Link href={p.url}>{p.name}</Nav.Link>
+
+                )}
               </Nav>
               <Form className="d-flex">
                 <FormControl

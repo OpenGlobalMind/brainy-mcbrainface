@@ -1,5 +1,5 @@
 import "./about.scss"
-export default function About() {
+export default function JerryAbout() {
   return (
     <div className="about">
       <div className="container">

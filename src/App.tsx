@@ -3,9 +3,8 @@ import { Header } from "./components/header";
 import { useState } from 'react';
 import { Brainish } from "./visualizations/brainish/brainish";
 import { Memebrane } from "./visualizations/memebrane/Memebrane";
-import { iViz } from './utils/iViz';
 import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
-import About from './pages/About';
+import JerryAbout from './pages/JerryAbout';
 import { Modal } from 'react-bootstrap';
 import { Brainstorm } from './visualizations/brainstorm/Brainstorm';
 
@@ -47,15 +46,19 @@ export function App() {
     <div className="fullHeight">
       <BrowserRouter>
         <Header
+          brainId={brainId}
           searchText={searchText}
           handleSearchInput={handleSearchInput}
           handleSearchClick={handleSearchClick}
         />
 
         <div className="plugins" style={loading ? { opacity: 0.5 } : {}}>
-          {/* ***** Add your visualizations here ***** */}
           <Routes>
-            <Route path="about" element={<About />} />
+            {/* ***** Pages ***** */}
+            <Route path="jerry" element={<JerryAbout />} >
+              <Route path="about" element={<JerryAbout />} />
+            </Route>
+            {/* ***** Add your visualizations here ***** */}
             <Route path="brainish" element={<Brainish setLoading={setLoading} />} >
               <Route path=":brainId" element={<Brainish setLoading={setLoading} />} >
                 <Route path=":thoughtId" element={<Brainish setLoading={setLoading} />} />
