@@ -219,10 +219,6 @@
     right: -13px;
   }
 
-  .areaWide {
-    padding-top: 60px;
-  }
-
   .childrenArea {
     padding-top: 10px;
     .areaLabel {
@@ -247,5 +243,9 @@
     .areaLabel {
       padding-left: 10px;
     }
+  }
+
+  .crumbsArea {
+    padding-top: 10px;
   }
 }
