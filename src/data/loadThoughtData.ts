@@ -2,9 +2,9 @@ import { iThought } from "./iThought";
 import { iRoot } from "./iRoot";
 
 export async function loadThoughtData(thoughtId: string, brainId: string, neighbourNotes: boolean = false) {
-  let apiUrl = `https://memebrane.conversence.com/brain/${brainId}/thought/${thoughtId}/`;
+  let apiUrl = `https://memebrane.conversence.com/brain/${brainId}/thought/${thoughtId}/?show=siblings`;
   if (neighbourNotes) {
-    apiUrl += '?neighbour_notes=true'
+    apiUrl += '&neighbour_notes=true'
   }
   const response = await fetch(`${apiUrl}`, {
     headers: {
@@ -31,6 +31,8 @@ export async function loadThoughtData(thoughtId: string, brainId: string, neighb
   const siblings = root.siblings.map((c) => thoughtsIndex[c]);
   const jumps = root.jumps.map((c) => thoughtsIndex[c]);
   const attachments = root.attachments;
+
+  console.log(root)
 
   // const url = attachments.find((a) => a.location)?.location;
 
