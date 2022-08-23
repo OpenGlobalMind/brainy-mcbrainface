@@ -27,7 +27,7 @@ export function App() {
   async function handleSearchClick(event: React.MouseEvent<HTMLButtonElement>) {
     setLoading(true);
     event.preventDefault();
-    const apiUrl = `https://memebrane.conversence.com/brain/jerry/search?query=${encodeURI(
+    const apiUrl = `https://memebrane.conversence.com/brain/${brainId}/search?query=${encodeURI(
       searchText
     )}&lang=simple&notes=on/`;
     fetch(`${apiUrl}`, {

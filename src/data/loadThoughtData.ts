@@ -32,8 +32,6 @@ export async function loadThoughtData(thoughtId: string, brainId: string, neighb
   const jumps = root.jumps.map((c) => thoughtsIndex[c]);
   const attachments = root.attachments;
 
-  console.log(root)
-
   // const url = attachments.find((a) => a.location)?.location;
 
   return {

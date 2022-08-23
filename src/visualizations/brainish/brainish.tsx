@@ -28,7 +28,6 @@ export const Brainish = ({ setLoading }: { setLoading: React.Dispatch<React.SetS
           setCrumbs(await addCrumbData(retrievedThought));
           // TODO: temp try opening in a new window
           for (const attachment of retrievedThought.attachments) {
-            console.log("opening URL")
             if (attachment.type === "ExternalUrl") {
               window.open(attachment.location, "mcBrain")
             }
