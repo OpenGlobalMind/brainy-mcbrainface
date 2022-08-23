@@ -30,16 +30,79 @@
   padding: 10px;
   transition: 1s;
   opacity: 1;
-  display: grid;
-  grid-template-columns: max(250px) auto max(250px);
-  grid-template-rows: auto;
-  grid-template-areas:
-    "jumps parents siblings"
-    "jumps thought siblings"
-    "jumps children siblings"
-    "crumbs crumbs crumbs";
-  gap: 10px;
   flex-grow: 1;
+}
+
+@media (min-width: 500px) {
+  .mainGrid {
+    display: grid;
+    grid-template-columns: max(250px) auto max(250px);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "jumps parents siblings"
+      "jumps thought siblings"
+      "jumps children siblings"
+      "crumbs crumbs crumbs";
+    gap: 10px;
+  }
+
+  .parentsLine {
+    border-left: 4px solid var(--line-color);
+    height: 33px;
+    position: absolute;
+    left: 50%;
+    top: -13px;
+  }
+
+  .childrenLine {
+    border-left: 4px solid var(--line-color);
+    height: 33px;
+    position: absolute;
+    left: 50%;
+    bottom: -13px;
+  }
+
+  .jumpsLine {
+    border-top: 4px solid var(--line-color);
+    width: 33px;
+    position: absolute;
+    top: 50%;
+    left: -13px;
+  }
+
+  .siblingsLine {
+    border-top: 4px solid var(--line-color);
+    width: 33px;
+    position: absolute;
+    top: 50%;
+    right: -13px;
+  }
+
+  .areaWide {
+    padding-top: 10px;
+  }
+
+  .childrenArea .areaLabel {
+    top: unset;
+    bottom: 0;
+  }
+
+  .areaNarrow {
+    max-height: 88vh;
+  }
+
+  .areaLabel {
+    position: absolute;
+    top: 0;
+    opacity: 0.1;
+    font-size: xxx-large;
+  }
+
+  .siblingsArea {
+    .areaLabel {
+      padding-left: 10px;
+    }
+  }
 }
 
 .areaWide {
@@ -51,6 +114,7 @@
   border-width: 10px;
   align-items: start;
   position: relative;
+  padding-top: 30px;
 }
 
 .areaNarrow {
@@ -63,23 +127,18 @@
   align-items: start;
   position: relative;
   overflow-y: auto;
-  max-height: 88vh;
-  padding-top: 60px;
+  padding-top: 30px;
 }
 
 .areaLabel {
   position: absolute;
   top: 0;
-  opacity: 0.1;
-  font-size: xxx-large;
+  opacity: 0.5;
+  font-size: large;
   text-transform: uppercase;
   font-weight: bolder;
   pointer-events: none;
-}
-
-.childrenArea .areaLabel {
-  top: unset;
-  bottom: 0;
+  padding-left: 1em;
 }
 
 .parentsArea {
@@ -94,43 +153,8 @@
 }
 
 .siblingsArea {
-  .areaLabel {
-    padding-left: 10px;
-  }
   grid-area: siblings;
   border-left: solid var(--line-color);
-}
-
-.parentsLine {
-  border-left: 4px solid var(--line-color);
-  height: 33px;
-  position: absolute;
-  left: 50%;
-  top: -13px;
-}
-
-.childrenLine {
-  border-left: 4px solid var(--line-color);
-  height: 33px;
-  position: absolute;
-  left: 50%;
-  bottom: -13px;
-}
-
-.jumpsLine {
-  border-top: 4px solid var(--line-color);
-  width: 33px;
-  position: absolute;
-  top: 50%;
-  left: -13px;
-}
-
-.siblingsLine {
-  border-top: 4px solid var(--line-color);
-  width: 33px;
-  position: absolute;
-  top: 50%;
-  right: -13px;
 }
 
 .childrenArea {
@@ -210,15 +234,6 @@
   color: black;
   border-radius: 5px;
   padding: 0;
-}
-
-.mainGrid {
-  grid-template-columns: max(250px) auto max(250px) max(400px);
-  grid-template-areas:
-    "jumps parents siblings notes"
-    "jumps thought siblings notes"
-    "jumps children siblings notes"
-    "crumbs crumbs crumbs crumbs";
 }
 
 .thoughtIcon {

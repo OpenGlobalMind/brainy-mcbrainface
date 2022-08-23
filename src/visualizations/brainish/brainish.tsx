@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { loadThoughtData } from "../../data/loadThoughtData";
 import { addCrumbData } from "../../data/addCrumbData";
-import { Attachment } from "../../components/Attachment";
+// import { Attachment } from "../../components/Attachment";
 
 export const Brainish = ({ setLoading }: { setLoading: React.Dispatch<React.SetStateAction<boolean>> }
 ) => {
@@ -46,18 +46,6 @@ export const Brainish = ({ setLoading }: { setLoading: React.Dispatch<React.SetS
 
   return (
     <div className="mainGrid">
-      <div className="parentsArea areaWide">
-        <div className="areaLabel">Parents</div>
-        {thought.parents?.map((t) => (
-          <Thought key={t.id} thought={t} brainId={brainId} />
-        ))}
-      </div>
-      <div className="jumpsArea areaNarrow">
-        <div className="areaLabel">Jumps</div>
-        {thought.jumps?.map((t) => (
-          <Thought key={t.id} thought={t} brainId={brainId} />
-        ))}
-      </div>
       <div className="thoughtArea">
         <div className="jumpsLine"></div>
         <div className="parentsLine"></div>
@@ -71,17 +59,29 @@ export const Brainish = ({ setLoading }: { setLoading: React.Dispatch<React.SetS
           <Thought key={t.id} thought={t} brainId={brainId} />
         ))}
       </div>
+      <div className="parentsArea areaWide">
+        <div className="areaLabel">Parents</div>
+        {thought.parents?.map((t) => (
+          <Thought key={t.id} thought={t} brainId={brainId} />
+        ))}
+      </div>
+      <div className="jumpsArea areaNarrow">
+        <div className="areaLabel">Jumps</div>
+        {thought.jumps?.map((t) => (
+          <Thought key={t.id} thought={t} brainId={brainId} />
+        ))}
+      </div>
       <div className="siblingsArea areaNarrow">
         <div className="areaLabel">Siblings</div>
         {thought.siblings?.map((t) => (
           <Thought key={t.id} thought={t} brainId={brainId} />
         ))}
       </div>
-      <div className="notesArea areaNarrow">
+      {/* <div className="notesArea areaNarrow">
         {thought.attachments?.map((a) => (
           <Attachment key={a.id} att={a} />
         ))}
-      </div>
+      </div> */}
       <div className="crumbsArea areaWide">
         {crumbs?.map((t) => (
           <Thought key={t.id ? t.id : t.toString()} thought={t} brainId={brainId} />
