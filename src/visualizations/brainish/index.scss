@@ -111,6 +111,7 @@
   position: relative;
   overflow: hidden;
   max-height: 1.3em;
+  min-height: 1.3em;
   word-break: break-all;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -219,16 +220,20 @@
   }
 
   .areaWide {
-    padding-top: 10px;
+    padding-top: 60px;
   }
 
-  .childrenArea .areaLabel {
-    top: unset;
-    bottom: 0;
+  .childrenArea {
+    padding-top: 10px;
+    .areaLabel {
+      top: unset;
+      bottom: 0;
+    }
   }
 
   .areaNarrow {
     max-height: 88vh;
+    padding-top: 60px;
   }
 
   .areaLabel {
