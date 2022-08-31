@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { loadThoughtData } from "../../data/loadThoughtData";
 import { addCrumbData } from "../../data/addCrumbData";
+import { config } from "../../config";
 // import { Attachment } from "../../components/Attachment";
 
 export const Brainish = ({ setLoading }: { setLoading: React.Dispatch<React.SetStateAction<boolean>> }
@@ -19,7 +20,7 @@ export const Brainish = ({ setLoading }: { setLoading: React.Dispatch<React.SetS
       if (!brainId) {
         navigate("jerry/32f9fc36-6963-9ee0-9b44-a89112919e29");
       } else if (!thoughtId) {
-        navigate(`${brainId}/32f9fc36-6963-9ee0-9b44-a89112919e29`);
+        navigate(config.brains[brainId].homeUrl);
       } else {
         setLoading(true);
         try {
