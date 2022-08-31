@@ -1,10 +1,10 @@
 import { iThought } from "./iThought";
 import { iRoot } from "./iRoot";
 
-export async function loadThoughtData(thoughtId: string, brainId: string, neighbourNotes: boolean = false) {
+export async function loadThoughtData(thoughtId: string, brainId: string, withAttachments: boolean = false) {
   let apiUrl = `https://memebrane.conversence.com/brain/${brainId}/thought/${thoughtId}/?show=siblings`;
-  if (neighbourNotes) {
-    apiUrl += '&neighbour_notes=true'
+  if (withAttachments) {
+    apiUrl += '&with_attachments=true'
   }
   const response = await fetch(`${apiUrl}`, {
     headers: {
